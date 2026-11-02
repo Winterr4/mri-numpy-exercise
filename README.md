@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/portada.jpeg" width="600">
+</p>
+
 # **MRI NumPy Exercise**
 
 What’s inside  
