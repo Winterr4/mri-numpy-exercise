@@ -2,10 +2,10 @@
   <img src="images/portada.jpeg" width="600">
 </p>
 
-# **MRI NumPy Exercise**
+# MRI NumPy Exercise
 
-What’s inside  
+**What’s inside**  
 Bias field correction on a simulated 3D MRI volume using broadcasting, with checks that each slice mean is ≈ 0 and that the global standard deviation barely changes
 
-Sourse  
+**Sourse**  
 'QLS612-Python Neuro Data Science' course
