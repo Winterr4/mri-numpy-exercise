@@ -1,12 +1,4 @@
-MRI NumPy Exercise
+MRI NumPy Exercise (QLS612-Python Neuro Data Science)
 
-Ejercicios de NumPy (simulación de un volumen MRI con broadcasting) y Pandas
-(filtrado, reset_index y merge sobre datos de participantes).
-
-## Cómo ejecutarlo
-pip install -r requirements.txt
-jupyter notebook notebooks/exercises.ipynb
-
-## Contenido
-- NumPy: normalización por slices con broadcasting y comprobaciones (media ≈ 0, std global).
-- Pandas: selección por condiciones, reset_index y merge por SUB_ID.
+What’s inside 
+NumPy: Bias field correction on a simulated 3D MRI volume using broadcasting, with checks that each slice mean is ≈ 0 and that the global standard deviation barely changes.
