@@ -14,23 +14,24 @@
 
 import numpy as np
 
-### FASE 1: generar cubo de datos ---------------------------------------------------------------------
+### STEP 1: generate data cube ---------------------------------------------------------------------
 import numpy as np
 np.random.seed(44)
 mri_i = np.random.normal(loc=120, scale=10, size=(100, 100, 100))
 print(mri_i.shape)
 
-### FASE 2: calcular media de todo el eje z(numeros de dentro (xy) de cada z, osea [:,:,z]=media)-----------------
+## STEP 2: compute the mean of the whole z axis (the numbers inside (xy) for each z, i.e. [:,:,z]=mean)-----------------
+
 media_i=np.mean(mri_i, axis=(0,1))
 
 
-### FASE 3: restar esa media a cada xy con broadcasting (necesito reshape)
+### STEP 3: subtract that mean from each xy slice with broadcasting (reshape needed)
 media_i_3D= media_i[np.newaxis, np.newaxis, :]
-#ó: media_i_3D= media_i.reshape((1, 1, 100)) 
+#or: media_i_3D= media_i.reshape((1, 1, 100)) 
 
 mri_c= mri_i - media_i_3D
 
-### FASE 4: evaluar si ahora xy (medias) es ==0, y si la std se mantiene cosntante
+## STEP 4: check whether the means are now ==0, and whether the std stays constant
 
 media_c= np.mean(mri_c,axis=(0,1))
 print(np.allclose(media_c, 0))
@@ -43,3 +44,18 @@ print(np.allclose(mri_i.std(), mri_c.std()))
 
 diff = abs(mri_i.std() - mri_c.std())
 print(diff)
+
+"""
+How i checked it:
+Bias field correction on a simulated 3D MRI volume using NumPy broadcasting.
+
+How I checked it:
+1. Computed the mean with axis=(0,1), which collapses X and Y and leaves
+   one mean per Z slice. That's why the result has shape (100,).
+2. Reshaped it to (1,1,100) so NumPy aligns dimensions from the right and
+   subtracts each mean from its entire slice.
+3. Verified that the mean of each slice after correction is ≈ 0 with np.allclose.
+4. The global std barely changes (diff ≈ 5e-4). This is expected: removing
+   the slice means eliminates the variance *between* slices, which is very
+   small compared to the total variance.
+"""
