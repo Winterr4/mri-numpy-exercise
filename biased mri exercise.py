@@ -46,9 +46,6 @@ diff = abs(mri_i.std() - mri_c.std())
 print(diff)
 
 """
-How i checked it:
-Bias field correction on a simulated 3D MRI volume using NumPy broadcasting.
-
 How I checked it:
 1. Computed the mean with axis=(0,1), which collapses X and Y and leaves
    one mean per Z slice. That's why the result has shape (100,).
