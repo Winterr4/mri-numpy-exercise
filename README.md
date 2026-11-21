@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/portada.jpeg" width="600">
+  <img src="images/portada.jpeg" width="1000">
 </p>
 
 # MRI NumPy Exercise
